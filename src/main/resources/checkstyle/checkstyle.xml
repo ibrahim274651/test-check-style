@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+  "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+  "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<!--
+  Standard Checkstyle de l'organisation
+  Basé sur Google Java Style Guide mais modifier à certains endroits.
+  Référence : https://google.github.io/styleguide/javaguide.html
+-->
+<module name="Checker">
+
+  <property name="severity" value="error"/>
+  <property name="fileExtensions" value="java"/>
+
+  <module name="SuppressionFilter">
+    <property
+        name="file"
+        value="src/main/resources/checkstyle/checkstyle-suppressions.xml"/>
+  </module>
+
+  <!-- ===== FICHIERS ===== -->
+  <module name="FileLength">
+    <property name="max" value="500"/>
+  </module>
+  <module name="FileTabCharacter">
+    <property name="eachLine" value="true"/>
+  </module>
+  <module name="NewlineAtEndOfFile"/>
+
+  <!-- ===== LONGUEUR DES LIGNES ===== -->
+  <module name="LineLength">
+    <property name="max" value="120"/>
+    <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+  </module>
+
+  <module name="TreeWalker">
+
+    <!-- ===== IMPORTS ===== -->
+    <module name="UnusedImports"/>
+    <module name="RedundantImport"/>
+    <module name="IllegalImport"/> <!-- Bloque sun.* -->
+    <module name="AvoidStarImport"/>
+
+    <!-- ===== NOMMAGE ===== -->
+    <!-- Classes : PascalCase -->
+    <module name="TypeName">
+      <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+    </module>
+    <!-- Méthodes : camelCase -->
+    <module name="MethodName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+    </module>
+    <!-- Variables locales et paramètres -->
+    <module name="LocalVariableName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+    </module>
+    <module name="ParameterName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+    </module>
+    <!-- Constantes : UPPER_SNAKE_CASE -->
+    <module name="ConstantName">
+      <property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$"/>
+    </module>
+    <!-- Attributs d'instance -->
+    <module name="MemberName">
+      <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+    </module>
+    <!-- Packages : minuscules -->
+    <module name="PackageName">
+      <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+    </module>
+
+    <!-- ===== STRUCTURE DES CLASSES ===== -->
+    <module name="OneTopLevelClass"/>
+    <module name="OuterTypeFilename"/>
+    <module name="OneStatementPerLine"/>
+    
+    <!-- ===== ACCOLADES & INDENTATION ===== -->
+    <module name="NeedBraces"/>
+    <module name="LeftCurly"/>
+    <module name="RightCurly"/>
+    <module name="Indentation">
+      <property name="basicOffset" value="4"/>   <!-- Style Google = 2 espaces -->
+      <property name="caseIndent" value="4"/>
+    </module>
+
+    <!-- ===== ESPACEMENT ===== -->
+    <module name="WhitespaceAround"/>
+    <module name="WhitespaceAfter"/>
+    <module name="NoWhitespaceBefore"/>
+    <module name="GenericWhitespace"/>
+    <module name="EmptyLineSeparator">
+      <property name="allowNoEmptyLineBetweenFields" value="true"/>
+    </module>
+
+    <!-- ===== COMPLEXITÉ ===== -->
+    <module name="CyclomaticComplexity">
+      <property name="max" value="15"/>
+    </module>
+    <module name="MethodLength">
+      <property name="max" value="60"/>
+    </module>
+    <module name="ParameterNumber">
+      <property name="max" value="7"/>
+    </module>
+
+    <!-- ===== BONNES PRATIQUES ===== -->
+    <module name="EqualsHashCode"/>         <!-- equals() sans hashCode() interdit -->
+    <module name="SimplifyBooleanExpression"/>
+    <module name="SimplifyBooleanReturn"/>
+    <module name="StringLiteralEquality"/>  <!-- Interdit "str" == "str" -->
+    <module name="NoFinalizer"/>            <!-- Interdit finalize() -->
+    <module name="UpperEll"/>              <!-- Long : L pas l -->
+    <module name="ModifierOrder"/>         <!-- public static final, pas static public -->
+    <module name="EmptyBlock"/>
+    <module name="FallThrough"/>           <!-- Switch sans break non intentionnel -->
+
+    <!-- ===== JAVADOC ===== -->
+    <!--
+    <module name="MissingJavadocMethod">
+      <property name="scope" value="public"/>
+      @Override ignoré par défaut (allowedAnnotations) ; pas de propriété ignoreOverriddenMethods 
+      <property name="allowedAnnotations" value="Override"/>
+    </module>
+    <module name="MissingJavadocType">
+      <property name="scope" value="public"/>
+    </module>
+
+    -->
+
+  </module>
+  
+</module>
