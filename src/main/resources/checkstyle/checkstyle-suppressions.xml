@@ -3,10 +3,16 @@
     "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
     "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 
+<!--
+  Project-specific Checkstyle suppressions.
+  See https://checkstyle.org/filters/suppressionfilter.html
+-->
 <suppressions>
 
+    <!-- Tests are excluded via includeTestSourceDirectory=false; keep as a safeguard. -->
     <suppress
-        files=".*src[\\/]test[\\/]java[\\/].*"
+        files=".*[\\/]src[\\/]test[\\/]java[\\/].*"
         checks=".*"/>
 
 </suppressions>
+
